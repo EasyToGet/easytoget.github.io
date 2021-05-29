@@ -20,7 +20,7 @@ function login() {
         document.cookie = `hexToken=${token}; expires=${new Date(expired)}; path=/`; // cookie 存入
         window.location = 'admin.html';
       }else {
-        alert("登入未成功，請正確輸入帳號密碼");
+        alert("登入未成功，請輸入正確帳號密碼");
       }
     })
     .catch((err) => {
