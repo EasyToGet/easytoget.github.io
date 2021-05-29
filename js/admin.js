@@ -14,6 +14,9 @@ const app = {
           this.render();
         }
       })
+      .catch((err) => {
+        console.log(err);
+      })
   },
   render() {
     const productListDom = document.querySelector('#productList');
@@ -61,15 +64,20 @@ const app = {
 
     const deleteBtns = document.querySelectorAll('.deleteBtn');
     deleteBtns.forEach(btn => {
-      btn.addEventListener('click', this.deleteProduct)
+      // btn.addEventListener('click', this.deleteProduct);
+      btn.addEventListener('click', this.deleteProduct.bind(this));
     })
   },
   deleteProduct(evt) {
     const id = evt.target.dataset.id;
     axios.delete(`${url}/api/${path}/admin/product/${id}`)
-      .then(res => {
+      .then((res) => {
         console.log(res);
-        app.getData();
+        // app.getData();
+        this.getData();
+      })
+      .catch((err) => {
+        console.log(err);
       })
   },
   init() {
